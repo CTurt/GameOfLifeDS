@@ -15,14 +15,13 @@ void setupState(void) {
 int getNeighbours(int i) {
 	int n = 0;
 	
-	if(((unsigned short *)currentState)[i - 1]) n++;
-	if(((unsigned short *)currentState)[i + 1]) n++;
-	if(((unsigned short *)currentState)[i - 256]) n++;
-	if(((unsigned short *)currentState)[i + 256]) n++;
-	if(((unsigned short *)currentState)[i - 256 - 1]) n++;
-	if(((unsigned short *)currentState)[i - 256 + 1]) n++;
-	if(((unsigned short *)currentState)[i + 256 - 1]) n++;
-	if(((unsigned short *)currentState)[i + 256 + 1]) n++;
+	int x, y;
+	for(x = -1; x < 2; x++) {
+		for(y = -1 * 256; y < 2 * 256; y += 256) {
+			if(!x && !y) continue;
+			if(((unsigned short *)currentState)[i + x + y]) n++;
+		}
+	}
 	
 	return n;
 }
