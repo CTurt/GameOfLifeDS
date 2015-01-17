@@ -30,6 +30,7 @@ void emulate(void) {
 	int i;
 	for(i = 0; i < 256 * 192; i++) {
 		int n = getNeighbours(i);
+		
 		switch(n) {
 			case 0:
 			case 1:
