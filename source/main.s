@@ -25,7 +25,7 @@ _start:
 	subs r2, r2, #1							@ Move along one
 	bne writePixel							@ Fill whole screen
 	
-	swi 0x05
+	@ swi 0x05								@ Wait for VBlank
 	
 	bl emulate
 	
